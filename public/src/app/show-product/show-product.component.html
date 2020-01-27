@@ -1,0 +1,20 @@
+<div class="showProduct">
+    <h1>Product Details</h1>
+    <button class="btn btn-link" [routerLink]="['/products']">Back</button>  
+    <br>
+    <p>Name: {{ product.name }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+    <p>Price: ${{ product.price }}</p>
+        <form *ngIf="product.quantity==0" (submit)="deleteProduct(product.id_num)" #form="ngForm">
+            <input type="hidden" [(ngModel)]="product.quantity" name="product.quantity" id="product.quantity" class="form-control"
+            value="{{product.quantity}}" 
+            required max="0" #quantity="ngModel">
+            <p [hidden]="quantity.valid">
+                Quantity must be 0 to delete product.
+            </p>
+            <button type="submit" [disabled]="form.invalid" id="deleteProduct" value="Edit Product" class="btn btn-danger">DELETE</button>
+        </form>
+    <div *ngIf="errors">
+        <p *ngFor="let error of errors">{{error}}</p>
+    </div>
+</div>

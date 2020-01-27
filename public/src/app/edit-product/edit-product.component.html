@@ -1,0 +1,45 @@
+<div class="editform">
+    <h1>Edit Product</h1>
+    <!-- <h6> {{ product | json }} </h6> -->
+    <form (submit)="editProduct(product.id_num)" class="form1" #form="ngForm">
+    <div class="form-group">
+        <label for="editProduct.name">Name:</label>
+        <input type="text" [(ngModel)]="product.name" name="editProduct.name" class="form-control" id="editProduct.name" 
+        value="{{product.name}}"
+        required minlength="3" #name="ngModel">
+        <p [hidden]="name.valid || name.pristine">
+            Names are required and need to have a length of at least 3 characters.
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="editProduct.quantity">Quantity:</label>
+        <input type="text" [(ngModel)]="product.quantity" name="editProduct.quantity" class="form-control" id="editProduct.quantity" 
+        value="{{product.quantity}}"
+        required min="0" #quantity="ngModel">
+        <p [hidden]="quantity.valid || quantity.pristine">
+            Quantity is required and needs to be greater than or equal to 0.
+        </p>
+    </div>
+    <div class="form-group">
+        <label for="editProduct.price">Price:</label>
+        <input type="text" [(ngModel)]="product.price" name="editProduct.price" class="form-control" id="editProduct.price" 
+        value="{{product.price}}"
+        required min="0" #price="ngModel">
+        <p [hidden]="price.valid || price.pristine">
+            Price is required and needs to be greater than or equal to 0.
+        </p>
+    </div>
+    <br>
+    <button type="submit" [disabled] = "form.invalid" class="btn btn-success" value="Edit Product">UPDATE</button>
+    </form>
+    <br>
+    <form (submit)="showProduct(product.id_num)" class="form1">
+        <button type="submit" class="btn btn-light" value="Reset Product">RESET</button>
+    </form>
+    <br>
+    <button class="btn btn-light" [routerLink]="['/products']">BACK</button>
+    <br>
+    <div *ngIf="errors">
+        <p *ngFor="let error of errors">{{error}}</p>
+    </div>
+</div>
