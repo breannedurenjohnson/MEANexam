@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
         <label for="editProduct.quantity">Quantity:</label>
-        <input type="text" [(ngModel)]="product.quantity" name="editProduct.quantity" class="form-control" id="editProduct.quantity" 
+        <input type="number" [(ngModel)]="product.quantity" name="editProduct.quantity" class="form-control" id="editProduct.quantity" 
         value="{{product.quantity}}"
         required min="0" #quantity="ngModel">
         <p [hidden]="quantity.valid || quantity.pristine">
@@ -22,19 +22,18 @@
     </div>
     <div class="form-group">
         <label for="editProduct.price">Price:</label>
-        <input type="text" [(ngModel)]="product.price" name="editProduct.price" class="form-control" id="editProduct.price" 
+        <input type="number" [(ngModel)]="product.price" name="editProduct.price" class="form-control" id="editProduct.price" 
         value="{{product.price}}"
         required min="0" #price="ngModel">
         <p [hidden]="price.valid || price.pristine">
             Price is required and needs to be greater than or equal to 0.
         </p>
     </div>
-    <br>
     <button type="submit" [disabled] = "form.invalid" class="btn btn-success" value="Edit Product">UPDATE</button>
     </form>
     <br>
     <form (submit)="showProduct(product.id_num)" class="form1">
-        <button type="submit" class="btn btn-light" value="Reset Product">RESET</button>
+        <button type="submit" class="btn btn-dark" value="Reset Product">RESET</button>
     </form>
     <br>
     <button class="btn btn-light" [routerLink]="['/products']">BACK</button>

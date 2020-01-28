@@ -1,6 +1,5 @@
 <div class="newform">
     <h1>Add Product</h1>
-    <br>
     <!-- <h6> New Product form: {{ newProduct | json }} </h6> -->
     <form (submit)="addProduct()" class="form1" #form="ngForm">
     <div class="form-group">
@@ -14,7 +13,7 @@
     </div>
     <div class="form-group">
         <label for="newProduct.quantity">Quantity:</label>
-        <input type="text" [(ngModel)]="newProduct.quantity" name="newProduct.quantity" id="newProduct.quantity" class="form-control"
+        <input type="number" [(ngModel)]="newProduct.quantity" name="newProduct.quantity" id="newProduct.quantity" class="form-control"
         required min="0" #quantity="ngModel">
         <p [hidden]="quantity.valid || quantity.pristine">
         <!-- name.dirty -->
@@ -23,17 +22,17 @@
     </div>
     <div class="form-group">
         <label for="newProduct.price">Price:</label>
-        <input type="text" [(ngModel)]="newProduct.price" name="newProduct.price" id="newProduct.price" class="form-control"
+        <input type="number" [(ngModel)]="newProduct.price" name="newProduct.price" id="newProduct.price" class="form-control"
         required min="0" #price="ngModel">
         <p [hidden]="price.valid || price.pristine">
         <!-- name.dirty -->
         Price is required and needs to be greater than or equal to 0.
         </p>
     </div>
-    <button type="submit" [disabled] = "form.invalid" class="btn btn-primary" value="Add Product">Add</button>
+    <button type="submit" [disabled] = "form.invalid" class="btn btn-primary" value="Add Product">ADD</button>
     </form>
     <br>
-    <button class="btn btn-light" [routerLink]="['/products']">Cancel</button>
+    <button class="btn btn-light" [routerLink]="['/products']">BACK</button>
     <div *ngIf="errors">
         <p *ngFor="let error of errors">{{error}}</p>
     </div>

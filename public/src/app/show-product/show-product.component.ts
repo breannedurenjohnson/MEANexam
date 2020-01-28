@@ -8,8 +8,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./show-product.component.css']
 })
 export class ShowProductComponent implements OnInit {
-  product = {};
-  errors = [];
+  product: {};
+  errors: [];
 
   constructor(private _httpService: HttpService, private _router: Router, private _route: ActivatedRoute) { 
     this.product = {"name": "", "quantity": "", "price": ""};
@@ -26,7 +26,6 @@ export class ShowProductComponent implements OnInit {
     console.log(`Got one product id param of: ${id_num}`);
     let tempObservable = this._httpService.showProductfromDB(id_num)
     tempObservable.subscribe(data => {
-      console.log(data);
       this.product = data;
       console.log(this.product)
       });
